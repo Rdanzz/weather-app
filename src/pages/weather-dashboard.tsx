@@ -4,7 +4,7 @@ import { useGeoLocation } from "@/hooks/use-geolocation";
 import { RefreshCcw, AlertCircle, MapPin } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import {
-  useForcastQuery,
+  useForecastQuery,
   useReverseGeocodeQuery,
   useWeatherQuery,
 } from "@/hooks/use-weather";
@@ -12,6 +12,7 @@ import CurrentWeather from "@/components/current-weather";
 import HourlyTemperature from "@/components/hourly-temperature";
 import { WeatherDetails } from "@/components/weather-details";
 import { WeatherForecast } from "@/components/weather-forecast";
+import { FavoriteCities } from "@/components/favorite-cities";
 
 const WeatherDashboard = () => {
   const {
@@ -23,7 +24,7 @@ const WeatherDashboard = () => {
   // console.log(coordinates);
 
   const weatherQuery = useWeatherQuery(coordinates);
-  const forecastQuery = useForcastQuery(coordinates);
+  const forecastQuery = useForecastQuery(coordinates);
   const locationQuery = useReverseGeocodeQuery(coordinates);
 
   const handleRefresh = () => {
@@ -95,6 +96,8 @@ const WeatherDashboard = () => {
   return (
     <div className="space-y-4">
       {/* Fav Cities */}
+      <FavoriteCities />
+
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold tracking-tight">My Location</h1>
         <Button
