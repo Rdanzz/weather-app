@@ -34,7 +34,7 @@ export interface WeatherData {
     dt: number
 }
 
-export interface ForcastData {
+export interface ForecastData {
     list: Array<{
         dt: number
         main: WeatherData["main"]
