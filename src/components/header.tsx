@@ -17,7 +17,7 @@ export default function Header() {
           />
         </Link>
 
-        <div className="flex gap-4">
+        <div className="flex items-center justify-end gap-2 sm:gap-4 max-w-full overflow-x-auto">
           <CitySearch />
           <ThemeToggle />
         </div>
