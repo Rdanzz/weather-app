@@ -5,7 +5,7 @@ import { ArrowDown, ArrowUp, Droplets, Wind } from "lucide-react";
 
 interface CurrentWEatherProps {
     data: WeatherData,
-    locationName: GeocodingResponse
+    locationName?: GeocodingResponse
 }
 const CurrentWeather = ({ data, locationName }: CurrentWEatherProps) => {
 
