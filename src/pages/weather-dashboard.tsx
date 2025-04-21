@@ -9,6 +9,7 @@ import {
   useWeatherQuery,
 } from "@/hooks/use-weather";
 import CurrentWeather from "@/components/current-weather";
+import HourlyTemperature from "@/components/hourly-temperature";
 
 const WeatherDashboard = () => {
   const {
@@ -22,11 +23,6 @@ const WeatherDashboard = () => {
   const weatherQuery = useWeatherQuery(coordinates);
   const forecastQuery = useForcastQuery(coordinates);
   const locationQuery = useReverseGeocodeQuery(coordinates);
-  // console.log(weatherQuery);
-  // console.log(forecastQuery);
-  // console.log(locationQuery);
-  // console.log("Weather Error:", weatherQuery.error);
-  // console.log("Forecast Error:", forecastQuery.error);
 
   const handleRefresh = () => {
     getLocation();
@@ -114,15 +110,19 @@ const WeatherDashboard = () => {
       </div>
 
       <div className="grid gap-6">
-        <div>
+        <div className="flex flex-col lg:flex-row gap-4">
           {/* Current Weather */}
-          <CurrentWeather data={weatherQuery.data} locationName={locationName}/>
+          <CurrentWeather
+            data={weatherQuery.data}
+            locationName={locationName}
+          />
 
           {/* Hourly Weather */}
+          <HourlyTemperature data={forecastQuery.data} />
         </div>
         <div>
-              {/* details */}
-              {/* forecast */}
+          {/* details */}
+          {/* forecast */}
         </div>
       </div>
     </div>
